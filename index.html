@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0f19">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  <title>کاریابی هوشمند جاب‌یو | @jobu.ir</title>
+  <meta name="description" content="سامانه دسترسی سریع به لینک آگهی‌های استخدامی منتشر شده در پیج اینستاگرام @jobu.ir با وارد کردن کد آگهی">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="کاریابی هوشمند جاب‌یو | @jobu.ir">
+  <meta property="og:description" content="کد آگهی اینستاگرام را وارد کنید و مستقیماً به لینک اصلی آگهی و ارسال رزومه بروید.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%23f59e0b'/><text x='50' y='68' font-size='55' font-weight='900' text-anchor='middle' fill='%230f172a'>J</text></svg>">
+
+  <!-- Vazirmatn Font CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-main: #0b0f19;
+      --bg-card: #131b2e;
+      --bg-card-hover: #19243d;
+      --border-color: #1e2b45;
+      --border-focus: #f59e0b;
+      --primary: #f59e0b;
+      --primary-hover: #d97706;
+      --primary-light: rgba(245, 158, 11, 0.12);
+      --accent-blue: #3b82f6;
+      --accent-emerald: #10b981;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.5;
+      overflow-x: hidden;
+      padding-bottom: env(safe-area-inset-bottom, 20px);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* Sticky Navbar */
+    header {
+      background: rgba(11, 15, 25, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding-top: env(safe-area-inset-top, 0px);
+    }
+
+    .nav-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-badge {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #0b0f19;
+      font-size: 20px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-size: 17px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .instagram-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(168, 85, 247, 0.15));
+      border: 1px solid rgba(236, 72, 153, 0.35);
+      color: #f472b6;
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .instagram-btn:active {
+      transform: scale(0.96);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 24px 0 16px 0;
+      text-align: center;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      background: var(--primary-light);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 800;
+      border-radius: 30px;
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-size: 22px;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    @media (min-width: 640px) {
+      .hero-title {
+        font-size: 28px;
+      }
+      .hero {
+        padding: 36px 0 20px 0;
+      }
+    }
+
+    .hero-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto 20px auto;
+      line-height: 1.6;
+      padding: 0 4px;
+    }
+
+    /* Mobile-Optimized Search Card */
+    .search-card-wrapper {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .search-card {
+      background: var(--bg-card);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 6px 8px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .search-card:focus-within {
+      border-color: var(--primary);
+      box-shadow: 0 8px 28px rgba(245, 158, 11, 0.2);
+    }
+
+    .search-icon-prefix {
+      color: var(--primary);
+      font-size: 18px;
+      padding-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .search-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: #ffffff;
+      font-size: 16px; /* 16px prevents iOS Safari auto-zoom */
+      font-weight: 800;
+      padding: 10px 4px;
+      outline: none;
+      min-width: 0;
+      direction: rtl;
+    }
+
+    .search-input::placeholder {
+      color: var(--text-dim);
+      font-weight: 500;
+      font-size: 13px;
+    }
+
+    .clear-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 16px;
+      cursor: pointer;
+      padding: 8px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    .clear-btn:active {
+      color: #ffffff;
+    }
+
+    .search-btn {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #0b0f19;
+      border: none;
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+      min-height: 44px;
+    }
+
+    .search-btn:active {
+      transform: scale(0.95);
+      background: #fbbf24;
+    }
+
+    /* Quick Suggestion Chips */
+    .quick-chips-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    .chip-label {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    .code-pill {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-muted);
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .code-pill:active {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: scale(0.95);
+    }
+
+    /* Featured Job Result Card */
+    #searchResultArea {
+      margin-top: 20px;
+      display: none;
+      max-width: 580px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .featured-job {
+      background: linear-gradient(180deg, #142038 0%, #0d1628 100%);
+      border: 2px solid #38bdf8;
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      text-align: right;
+      box-shadow: 0 16px 36px rgba(56, 189, 248, 0.18);
+      animation: popIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.96) translateY(-6px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .job-badge-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .job-code-tag {
+      background: var(--primary);
+      color: #0b0f19;
+      font-weight: 900;
+      font-size: 13px;
+      padding: 4px 10px;
+      border-radius: 8px;
+      letter-spacing: 0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .verified-tag {
+      font-size: 12px;
+      color: #38bdf8;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .job-title-h2 {
+      font-size: 18px;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    @media (min-width: 640px) {
+      .job-title-h2 {
+        font-size: 20px;
+      }
+      .featured-job {
+        padding: 22px;
+      }
+    }
+
+    .job-company-name {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .job-meta-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    .meta-chip {
+      background: #1e293b;
+      color: #cbd5e1;
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .meta-chip.salary {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      font-weight: 800;
+    }
+
+    /* Large Touch CTA Button */
+    .apply-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 15px 20px;
+      border-radius: var(--radius-md);
+      font-size: 15px;
+      font-weight: 900;
+      transition: all 0.15s;
+      width: 100%;
+      min-height: 52px;
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+    }
+
+    .apply-btn:active {
+      transform: scale(0.97);
+      background: #1e40af;
+    }
+
+    .action-secondary-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .share-btn {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-muted);
+      padding: 9px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .share-btn:active {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+    }
+
+    /* All Jobs Section & Filter Row */
+    .section-head {
+      margin: 32px 0 14px 0;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 900;
+      color: #ffffff;
+    }
+
+    /* Swipeable Horizontal City Filter Chips for Mobile */
+    .city-scroll-container {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding: 4px 0 14px 0;
+      margin-bottom: 10px;
+      scrollbar-width: none; /* Firefox */
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .city-scroll-container::-webkit-scrollbar {
+      display: none; /* Safari & Chrome */
+    }
+
+    .city-chip {
+      white-space: nowrap;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .city-chip.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #0b0f19;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+    }
+
+    .city-chip:active {
+      transform: scale(0.95);
+    }
+
+    /* Jobs Grid */
+    .jobs-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    @media (min-width: 640px) {
+      .jobs-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+    }
+
+    @media (min-width: 960px) {
+      .jobs-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* Mobile Job Card */
+    .job-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .job-card:active {
+      transform: scale(0.98);
+      border-color: var(--primary);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .card-code {
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .card-city {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .card-company {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 12px;
+    }
+
+    .card-type {
+      color: var(--text-dim);
+      font-size: 11px;
+    }
+
+    .card-apply-text {
+      color: #38bdf8;
+      font-weight: 800;
+      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 36px 16px;
+      color: var(--text-dim);
+      font-size: 13px;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border-color);
+      background: #070a12;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    /* Toast Notification for Mobile */
+    .mobile-toast {
+      position: fixed;
+      bottom: calc(env(safe-area-inset-bottom, 16px) + 16px);
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #0f172a;
+      border: 1px solid #38bdf8;
+      color: #ffffff;
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 700;
+      z-index: 1000;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+      transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .mobile-toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Navbar -->
+  <header>
+    <div class="container">
+      <div class="nav-content">
+        <a href="#" class="logo-group">
+          <div class="logo-badge">J</div>
+          <div>
+            <div class="brand-title">@jobu.ir</div>
+            <div class="brand-sub">کاریابی هوشمند اینستاگرام</div>
+          </div>
+        </a>
+
+        <a href="https://instagram.com/jobu.ir" target="_blank" rel="noreferrer" class="instagram-btn">
+          <span>پیج رسمی</span>
+          <span>📸</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero & Mobile Search -->
+  <section class="hero">
+    <div class="container">
+      <span class="badge-pill">
+        <span>⚡</span>
+        <span>دسترسی مستقیم به لینک استخدام</span>
+      </span>
+      <h1 class="hero-title">کد آگهی اینستاگرام را وارد کنید</h1>
+      <p class="hero-desc">
+        کد ۴ رقمی درج شده روی کاور پست یا استوری پیج <strong>@jobu.ir</strong> را در کادر زیر جستجو کنید.
+      </p>
+
+      <!-- Search Box with Clear Button -->
+      <div class="search-card-wrapper">
+        <div class="search-card">
+          <div class="search-icon-prefix">#</div>
+          <input 
+            type="text" 
+            id="codeSearchInput" 
+            class="search-input" 
+            placeholder="مثلاً 1042..."
+            autocomplete="off"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            enterkeyhint="search"
+          >
+          <button id="clearInputBtn" class="clear-btn" aria-label="پاک کردن">✕</button>
+          <button id="searchBtn" class="search-btn">
+            <span>جستجو</span>
+            <span>🔍</span>
+          </button>
+        </div>
+
+        <!-- Quick Code Suggestion Chips -->
+        <div class="quick-chips-row" id="quickPillsRow">
+          <span class="chip-label">کدهای پیشنهادی:</span>
+          <span id="quickPillsContainer"></span>
+        </div>
+      </div>
+
+      <!-- Live Matched Job Result -->
+      <div id="searchResultArea"></div>
+    </div>
+  </section>
+
+  <!-- All Available Jobs Section -->
+  <section class="container">
+    <div class="section-head">
+      <h2 class="section-title">فرصت‌های شغلی فعال (<span id="totalJobsCount">۰</span>)</h2>
+    </div>
+
+    <!-- Swipeable Horizontal City Filters for Touch / Mobile -->
+    <div class="city-scroll-container" id="cityChipsContainer">
+      <button class="city-chip active" data-city="all">همه شهرها</button>
+    </div>
+
+    <!-- Grid of Jobs -->
+    <div id="jobsGrid" class="jobs-grid">
+      <div class="empty-state">در حال بارگذاری آگهی‌ها...</div>
+    </div>
+  </section>
+
+  <!-- Mobile Toast -->
+  <div id="mobileToast" class="mobile-toast">لینک آگهی کپی شد!</div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© تمامی حقوق محفوظ است — پیج اینستاگرام @jobu.ir | پلتفرم اتوماسیون کاریابی</p>
+    </div>
+  </footer>
+
+  <script>
+    let allJobs = [];
+    let currentSelectedCity = 'all';
+
+    const searchInput = document.getElementById('codeSearchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const clearBtn = document.getElementById('clearInputBtn');
+    const resultArea = document.getElementById('searchResultArea');
+    const quickPillsContainer = document.getElementById('quickPillsContainer');
+    const cityChipsContainer = document.getElementById('cityChipsContainer');
+    const jobsGrid = document.getElementById('jobsGrid');
+    const totalJobsCount = document.getElementById('totalJobsCount');
+    const mobileToast = document.getElementById('mobileToast');
+
+    // Convert Persian (۰-۹) and Arabic (٠-٩) digits to English digits
+    function toEnglishDigits(str) {
+      if (!str) return '';
+      const persianDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+      const arabicDigits = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+      let res = String(str);
+      for (let i = 0; i < 10; i++) {
+        res = res.replaceAll(persianDigits[i], String(i)).replaceAll(arabicDigits[i], String(i));
+      }
+      return res;
+    }
+
+    function showToast(text) {
+      mobileToast.textContent = text;
+      mobileToast.classList.add('show');
+      setTimeout(() => mobileToast.classList.remove('show'), 2500);
+    }
+
+    // Load jobs from data.json with cache buster
+    async function loadJobs() {
+      try {
+        const response = await fetch('./data.json?v=' + Date.now());
+        if (!response.ok) throw new Error('data.json not loaded');
+        const data = await response.json();
+        allJobs = Array.isArray(data) ? data : (data.jobs || []);
+        
+        initQuickPills();
+        initCityChips();
+        renderJobs(allJobs);
+        checkUrlQueryCode();
+      } catch (err) {
+        console.error('Error loading jobs:', err);
+        jobsGrid.innerHTML = `
+          <div class="empty-state" style="grid-column: 1/-1; color: #f87171;">
+            خطا در دریافت لیست آگهی‌ها. لطفاً اتصال اینترنت خود را بررسی و صفحه را تازه‌سازی کنید.
+          </div>
+        `;
+      }
+    }
+
+    // Quick suggestion pills under search box
+    function initQuickPills() {
+      if (!allJobs.length) {
+        document.getElementById('quickPillsRow').style.display = 'none';
+        return;
+      }
+      const sampleJobs = allJobs.slice(0, 8);
+      quickPillsContainer.innerHTML = sampleJobs.map(j => `
+        <button class="code-pill" onclick="selectAndShowJob('${j.code}')">#${j.code}</button>
+      `).join(' ');
+    }
+
+    // Mobile Horizontal City Filter Chips
+    function initCityChips() {
+      const cities = Array.from(new Set(allJobs.map(j => (j.city || '').trim()).filter(Boolean)));
+      
+      let html = `<button class="city-chip active" onclick="filterByCity('all', this)">همه (${allJobs.length})</button>`;
+      cities.forEach(city => {
+        const count = allJobs.filter(j => (j.city || '').trim() === city).length;
+        html += `<button class="city-chip" onclick="filterByCity('${city}', this)">${city} (${count})</button>`;
+      });
+      cityChipsContainer.innerHTML = html;
+    }
+
+    function filterByCity(city, btnElement) {
+      currentSelectedCity = city;
+      document.querySelectorAll('.city-chip').forEach(el => el.classList.remove('active'));
+      if (btnElement) btnElement.classList.add('active');
+
+      if (city === 'all') {
+        renderJobs(allJobs);
+      } else {
+        renderJobs(allJobs.filter(j => (j.city || '').trim() === city));
+      }
+    }
+
+    // Format target apply URL
+    function formatExactJobUrl(rawUrl, job) {
+      let url = String(rawUrl || '').trim();
+      if (!url || url === 'https://jobinja.ir' || url === 'https://jobvision.ir') {
+        if (job && job.title) {
+          return `https://jobinja.ir/jobs?filters%5Bkeywords%5D%5B0%5D=${encodeURIComponent(job.title)}`;
+        }
+        return 'https://jobinja.ir';
+      }
+      if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        url = 'https://' + url.replace(/^\/+/, '');
+      }
+      return url;
+    }
+
+    // Render Job Cards
+    function renderJobs(jobsList) {
+      totalJobsCount.textContent = jobsList.length;
+
+      if (!jobsList || jobsList.length === 0) {
+        jobsGrid.innerHTML = '<div class="empty-state" style="grid-column: 1/-1;">هیچ آگهی فعالی در این بخش یافت نشد.</div>';
+        return;
+      }
+
+      jobsGrid.innerHTML = jobsList.map(job => `
+        <div class="job-card" onclick="selectAndShowJob('${job.code}')">
+          <div>
+            <div class="card-top">
+              <span class="card-code">#${job.code}</span>
+              <span class="card-city">📍 ${job.city || 'سراسر کشور'}</span>
+            </div>
+            <h3 class="card-title">${job.title}</h3>
+            <div class="card-company">${job.company}</div>
+          </div>
+
+          <div class="card-footer">
+            <span class="card-type">${job.workType || 'تمام وقت'}</span>
+            <span class="card-apply-text">مشاهده آگهی ↗</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Search Action with Persian/Arabic digits conversion
+    function performSearch() {
+      const raw = searchInput.value;
+      const cleanDigits = toEnglishDigits(raw).replace(/[^0-9]/g, '');
+
+      if (!cleanDigits) {
+        resultArea.style.display = 'none';
+        return;
+      }
+
+      const match = allJobs.find(j => {
+        const jCodeClean = toEnglishDigits(String(j.code || '')).replace(/[^0-9]/g, '');
+        return jCodeClean === cleanDigits;
+      });
+
+      if (match) {
+        const targetUrl = formatExactJobUrl(match.sourceUrl, match);
+
+        resultArea.style.display = 'block';
+        resultArea.innerHTML = `
+          <div class="featured-job">
+            <div class="job-badge-row">
+              <span class="job-code-tag">کد آگهی: #${match.code}</span>
+              <span class="verified-tag">✓ تایید شده در پیج @jobu.ir</span>
+            </div>
+
+            <h2 class="job-title-h2">${match.title}</h2>
+            <div class="job-company-name"><strong>شرکت:</strong> ${match.company}</div>
+
+            <div class="job-meta-chips">
+              <span class="meta-chip">📍 ${match.city || 'سراسر کشور'}</span>
+              <span class="meta-chip">💼 ${match.workType || 'تمام وقت'}</span>
+              ${match.salaryRange ? `<span class="meta-chip salary">💰 ${match.salaryRange}</span>` : ''}
+              ${match.shamsiDate ? `<span class="meta-chip">📅 ${match.shamsiDate}</span>` : ''}
+            </div>
+
+            <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" class="apply-btn">
+              <span>مشاهده و ارسال رزومه در لینک اصلی</span>
+              <span>↗</span>
+            </a>
+
+            <div class="action-secondary-row">
+              <button class="share-btn" onclick="shareJob('${match.code}', '${match.title.replace(/'/g, "\\'")}')">
+                <span>🔗</span>
+                <span>کپی لینک مستقیم این آگهی</span>
+              </button>
+            </div>
+          </div>
+        `;
+
+        resultArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        resultArea.style.display = 'block';
+        resultArea.innerHTML = `
+          <div style="background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.35); border-radius: 16px; padding: 18px; color: #fca5a5; font-size: 13px; text-align: center; line-height: 1.6;">
+            آگهی با کد <strong>#${cleanDigits}</strong> یافت نشد!<br>
+            <span style="font-size: 11px; opacity: 0.85;">لطفاً عدد را با کد درج شده در پست اینستاگرام بررسی کنید یا از لیست پایین جستجو نمایید.</span>
+          </div>
+        `;
+      }
+    }
+
+    function selectAndShowJob(code) {
+      searchInput.value = code;
+      clearBtn.style.display = 'flex';
+      performSearch();
+    }
+
+    // Share / Copy Link Helper
+    async function shareJob(code, title) {
+      const shareUrl = window.location.origin + window.location.pathname + '?code=' + code;
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: `آگهی استخدام ${title} | @jobu.ir`,
+            text: `مشاهده آگهی استخدام در پیج جاب‌یو (کد #${code})`,
+            url: shareUrl,
+          });
+          return;
+        } catch {}
+      }
+      try {
+        await navigator.clipboard.writeText(shareUrl);
+        showToast('لینک مستقیم این آگهی کپی شد!');
+      } catch {
+        showToast('آدرس: ' + shareUrl);
+      }
+    }
+
+    // Auto-detect ?code=1042 in URL (Instagram Story Link)
+    function checkUrlQueryCode() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const rawCode = urlParams.get('code') || window.location.hash.replace('#', '');
+      if (rawCode) {
+        const cleanCode = toEnglishDigits(rawCode).replace(/[^0-9]/g, '');
+        if (cleanCode) {
+          selectAndShowJob(cleanCode);
+        }
+      }
+    }
+
+    // Input listeners with instant Persian/English 4-digit code auto-search
+    searchInput.addEventListener('input', () => {
+      const raw = searchInput.value;
+      clearBtn.style.display = raw.trim() ? 'flex' : 'none';
+      
+      // Auto-trigger search as soon as 4 digits are entered in Persian or English
+      const cleanDigits = toEnglishDigits(raw).replace(/[^0-9]/g, '');
+      if (cleanDigits.length === 4) {
+        performSearch();
+      }
+    });
+
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      clearBtn.style.display = 'none';
+      resultArea.style.display = 'none';
+      searchInput.focus();
+    });
+
+    searchBtn.addEventListener('click', performSearch);
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') performSearch();
+    });
+
+    // Start
+    loadJobs();
+  </script>
+</body>
+</html>
